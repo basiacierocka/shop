@@ -1,0 +1,23 @@
+<a href="/basket">Koszyk</a>
+<a href="/">Home</a>
+<h1> Products</h1>
+  <table>
+    <thead>
+      <tr>
+        <th> ID </th>
+        <th> Nazwa Produktu </th>
+        <th> Cena </th>
+        <th> Dostępna ilość </th>
+      </tr>
+    </thead>
+    <tbody>
+      <% products.each do |product| %>
+      <tr>
+        <td><%= product.id %></td>
+        <td><%= product.name %></td>
+        <td><%= product.price %></td>
+        <td><%= product.quantity %></td>
+    </tr>
+    <%end%>
+  </tbody>
+</table>
