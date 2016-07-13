@@ -10,20 +10,32 @@ module Shop
     Product.new(id: "4", name: "lina_sizalowa_metr", price: 13, quantity: 10),
     Product.new(id: "5", name: "flaga_sygnalowa", price: 10, quantity: 60)
   ]
+  BASKET = []
+  WAREHOUSE = []
 
   class App< Sinatra::Base
 
     get "/" do
-      erb :"product/index", locals: { products: PRODUCTS }
+      erb :"products/index", locals: { products: PRODUCTS }
     end
 
     get "/products" do
       @products = FetchProducts.new.call
-      erb :"product/show", locals: { products: PRODUCTS }
+      erb :"products/show", locals: { products: PRODUCTS }
+    end
+
+    get "/products/:id" do |id|
+        product = FetchProduct.new.call(id)
+        erb :"product/show", locals: { product: product }
     end
 
     get "/basket" do
-      erb :"basket/show"
+      erb :"item/show"
+    end
+
+    post "/basket" do
+      AddToBasket.new(params).call
+      redirect "/products"
     end
   end
 end
