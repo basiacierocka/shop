@@ -4,18 +4,18 @@
   <table>
     <thead>
       <tr>
-        <th> ID </th>
         <th> Nazwa Produktu </th>
         <th> Cena </th>
-        <th> Dostępna ilość </th>
+        <th> Wybrana ilość </th>
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
+      <% basket.each do |b| %>
+    <tr>
+      <td><%= b[:product].name %></td>
+      <td><%= b[:product].price %></td>
+      <td><%= b[:quantity] %></td>
+    </tr>
+<% end %>
     </tbody>
   </table>

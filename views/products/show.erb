@@ -7,7 +7,6 @@
         <th> ID </th>
         <th> Nazwa Produktu </th>
         <th> Cena </th>
-        <th> Dostępna ilość </th>
         <th> Dodaj do koszyka </th>
       </tr>
     </thead>
@@ -17,7 +16,6 @@
         <td><%= product.id %></td>
         <td><%= product.name %></td>
         <td><%= product.price %></td>
-        <td><%= product.quantity %></td>
         <td><form action="/basket" method="post">
   <input type="hidden" name="product_id" value=<%= product.id %>>
   <input type="number" name="quantity" value=1>
