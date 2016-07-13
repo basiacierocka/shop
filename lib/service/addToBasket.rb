@@ -10,7 +10,6 @@ module Shop
         product_id: @product_id,
         quantity: @quantity
       )
-      p BASKET.product
     end
   end
 end

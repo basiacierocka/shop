@@ -1,21 +1,32 @@
-  <a href="/products">Produkty</a>
-  <a href="/">Home</a>
-  <h1> Koszyk</h1>
+  <nav>
+    <a href="/products">Produkty</a>
+    <a href="/">Home</a>
+  </nav>
+  <h1 class="site_name"> Koszyk</h1>
   <table>
     <thead>
       <tr>
         <th> Nazwa Produktu </th>
-        <th> Cena </th>
         <th> Wybrana ilość </th>
+        <th> Cena </th>
+        <th> Razem </th>
       </tr>
     </thead>
     <tbody>
       <% basket.each do |b| %>
     <tr>
       <td><%= b[:product].name %></td>
-      <td><%= b[:product].price %></td>
       <td><%= b[:quantity] %></td>
+      <td><%= b[:product].price %>zł</td>
+      <td><%= b[:total_price] %>zł</td>
     </tr>
-<% end %>
+    <% end %>
     </tbody>
+    <tfoot><tr>
+      <td></td>
+      <td></td>
+      <td>SUMA</td>
+      <td>jakas suma zł</td>
+    </tr>
+    </tfoot>
   </table>

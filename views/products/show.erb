@@ -4,7 +4,6 @@
   <table>
     <thead>
       <tr>
-        <th> ID </th>
         <th> Nazwa Produktu </th>
         <th> Cena </th>
         <th> Dodaj do koszyka </th>
@@ -13,9 +12,8 @@
     <tbody>
       <% products.each do |product| %>
       <tr>
-        <td><%= product.id %></td>
         <td><%= product.name %></td>
-        <td><%= product.price %></td>
+        <td><%= product.price %> zl</td>
         <td><form action="/basket" method="post">
   <input type="hidden" name="product_id" value=<%= product.id %>>
   <input type="number" name="quantity" value=1>

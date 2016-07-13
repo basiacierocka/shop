@@ -15,9 +15,14 @@ module Shop
       FetchProduct.new.call(product_id)
     end
 
+    def total_price
+      product = fetch_product
+      product.price * quantity
+      end
+
     private
     def set_id
       @@id += 1
     end
-  end
+end
 end
