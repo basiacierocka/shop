@@ -1,7 +1,7 @@
 require "spec_helper"
-require"rack/test"
+require "rack/test"
 
-module AppHelper
+require_relative "../shop"
   def app
     Shop::App
     end
@@ -9,4 +9,5 @@ module AppHelper
 
 RSpec.configure do |config|
   config.include Rack::Test::Methods, type: :request
+  config.include AppHelper, type: :request
 end
