@@ -1,32 +1,40 @@
-  <nav>
-    <a href="/products">Produkty</a>
-    <a href="/">Home</a>
-  </nav>
-  <h1 class="site_name"> Koszyk</h1>
-  <table>
-    <thead>
-      <tr>
-        <th> Nazwa Produktu </th>
-        <th> Wybrana ilość </th>
-        <th> Cena </th>
-        <th> Razem </th>
-      </tr>
-    </thead>
-    <tbody>
-      <% basket.each do |b| %>
-    <tr>
-      <td><%= b[:product].name %></td>
-      <td><%= b[:quantity] %></td>
-      <td><%= b[:product].price %>zł</td>
-      <td><%= b[:total_price] %>zł</td>
-    </tr>
-    <% end %>
-    </tbody>
-    <tfoot><tr>
-      <td></td>
-      <td></td>
-      <td>SUMA</td>
-      <td>jakas suma zł</td>
-    </tr>
-    </tfoot>
-  </table>
+<nav>
+ <a href="/products">Produkty</a>
+ <a href="/">Home</a>
+</nav>
+<h1 class="site_name"> Koszyk</h1>
+<table class="basket-table">
+ <thead>
+   <tr>
+     <th> Nazwa Produktu </th>
+     <th> Wybrana ilość </th>
+     <th> Cena </th>
+     <th> Razem </th>
+     <th> Usuń </th>
+   </tr>
+ </thead>
+ <tbody>
+   <% basket.each do |b| %>
+ <tr>
+   <td><%= b[:product].name %></td>
+   <td><%= b[:quantity] %></td>
+   <td><%= b[:product].price %> zł</td>
+   <td><%= b[:total_price] %> zł</td>
+   <td>
+    <form action="/basket" method="post">
+      <input type="hidden" name="product_id" value=<%=%>>
+      <input type="number" name="quantity" value=1>
+      <input type="submit" value="Usuń">
+    </form>
+  </td>
+ </tr>
+ <% end %>
+ </tbody>
+ <tfoot><tr>
+   <td></td>
+   <td></td>
+   <td>SUMA</td>
+   <td><%=basket.reduce(0) { |total_price, item| total_price += item[:total_price] }%> zl</td>
+ </tr>
+ </tfoot>
+</table>

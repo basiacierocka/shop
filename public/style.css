@@ -20,10 +20,11 @@ a{
   color: #fff;
   margin-right: 3%;
   float:right;
+  padding:1%;
 }
 
 a:hover{
-   background-color: rgba(255, 255, 255, 0.8);
+   background-color: rgba(255, 255, 255, 0.2);
  }
 .site_name {
   margin
@@ -33,12 +34,20 @@ a:hover{
   margin: 10% 20%;
 }
 
+.basket-table{
+  width:100%;
+}
+
 table {
     background-color: #fff;
-    width: 80%;
+    width: 85%;
     color: #003d66;
     border-radius: 5px;
 }
+th {
+  width: 30px;
+}
+
 tbody tr:nth-child(2n+1) {
     background-color: #e6f5ff;
 }
@@ -47,3 +56,7 @@ tbody tr:nth-child(2n+1) {
    padding: 2%;
    text-align: center;
 }
+
+    Contact GitHub API Training Shop Blog About
+
+    © 2016 GitHub, Inc. Terms Privacy Security Status Help
