@@ -38,5 +38,10 @@ module Shop
       AddToBasket.new(params).call
       redirect "/products"
     end
+
+    delete "/basket" do
+      RemoveFromBasket.new(params).call
+      redirect "/basket"
+    end
   end
 end
