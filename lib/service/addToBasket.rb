@@ -8,7 +8,7 @@ module Shop
     def call
       BASKET << Item.new(
         product_id: @product_id,
-        quantity: @quantity,
+        quantity: @quantity
       )
     end
   end
