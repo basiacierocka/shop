@@ -8,9 +8,5 @@ module Shop
     def Fetch_basket_item
       FetchBasketItem.new.call(basket_item_id)
     end
-
-    def call
-    
-    end
   end
 end
