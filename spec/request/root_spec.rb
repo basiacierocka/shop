@@ -7,6 +7,7 @@ RSpec.describe "GET /", type: :request do
 
   it "returns 200 HTTP code" do
     expect(last_response.status). to eql(200)
+  end
 
   it "returns valid html Content-type" do
     expect(last_response.headers["Content-Type"]).to include ("text/html")
@@ -26,6 +27,6 @@ RSpec.describe "GET /", type: :request do
 
   private
     def do_request
-      get "/",
+      get "/"
     end
 end

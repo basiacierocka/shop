@@ -2,6 +2,8 @@ require "spec_helper"
 require "rack/test"
 
 require_relative "../shop"
+
+module AppHelper
   def app
     Shop::App
     end

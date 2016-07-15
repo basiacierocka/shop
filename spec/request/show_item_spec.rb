@@ -1,11 +1,13 @@
 require "web_helper"
 
 RSpec.describe "POST /basket", type: :request do
-
+  
 #   context "invalid params" do
 #     let(:invalid params){{foo:"bar"}}
 #
-#    end
+#      before do
+#       do_request(invalid_params)
+#     end
 #
 #     it "return 422 HTTP status code" do
 #       expect(last_response.status). to eql(422)
