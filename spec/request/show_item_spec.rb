@@ -1,198 +1,40 @@
 require "web_helper"
 
-RSpec.describe "POST /basket", type: :request do
-  
-#   context "invalid params" do
-#     let(:invalid params){{foo:"bar"}}
-#
-#      before do
-#       do_request(invalid_params)
-#     end
-#
-#     it "return 422 HTTP status code" do
-#       expect(last_response.status). to eql(422)
-#     end
-#   end
-#
-#   context "valid params" do
-#     let(:params){{product_id:1, quantity:10}}
-#     let(:domain){{"http://example.org"}}
-#
-#     before do
-#       do_request(params)
-#     end
-#
-#     it "redirect to products view" do
-#       expect(last_response).to be_redirect
-#     end
-#
-#     it "return 201 HTTP status code" do
-#       expect(last_response.status). to eql(200)
-#     end
-#   end
-#
-#   it "returns valid html Content-Type" do
-#     expect(last_response.headers["Content-Type"]).to include ("text/html")
-#   end
-#
-#   it "returns link to products view" do
-#     expect(last_response.body).to include("<a href=\"/products\">Produkty</a>")
-#   end
-#
-#   it "returns link to homepage" do
-#     expect(last_response.body).to include("<a href=\"/\">Home</a>")
-#   endrequire "web_helper"
-#
-# RSpec.describe "POST /basket", type: :request do
-#   context "invalid params" do
-#     let(:invalid params){{foo:"bar"}}
-# "redirect to products view" do
-#       expect(last_response).to be_redirect
-#     end
-#
-#     it "return 201 HTTP status code" do
-#       expect(last_response.status). to eql(200)
-#     end
-#   end
-#
-#   it "returns valid html Content-Type" do
-#     expect(last_response.headers["Content-Type"]).to include ("text/html")
-#   end
-#
-#   it "returns link to products view" do
-#     expect(last_response.body).to include("<a href=\"/products\">Produkty</a>")
-#   end
-#
-#   it "returns link to homepage" do
-#     expect(last_response.body).to include("<a href=\"/\">Home</a>")
-#   endo include("<a href=\"/\">Home</a>")
-#   end
-# "redirect to products view" do
-#       expect(last_response).to be_redirect
-#     end
-#
-#     it "return 201 HTTP status code" do
-#       expect(last_response.status). to eql(200)
-#     end
-#   end
-#
-#   it "returns valid html Content-Type" do
-#     expect(last_response.headers["Content-Type"]).to include ("text/html")
-#   end
-#
-#   it "returns link to products view" do
-#     expect(last_response.body).to include("<a href=\"/products\">Produkty</a>")
-#   end
-#
-#   it "returns link to homepage" do
-#     expect(last_response.body).to include("<a href=\"/\">Home</a>")
-#   endo include("<a href=\"/\">Home</a>")
-#   end
-#
-#     before do
-#       do_request(invalid_params)
-#     end
-#
-#     it "return 422 HTTP status code" do "redirect to products view" do
-#       expect(last_response).to be_redirect
-#     end
-#
-#     it "return 201 HTTP status code" do
-#       expect(last_response.status). to eql(200)
-#     end
-#   end
-#
-#   it "returns valid html Content-Type" do
-#     expect(last_response.headers["Content-Type"]).to include ("text/html")
-#   end
-#
-#   it "returns link to products view" do
-#     expect(last_response.body).to include("<a href=\"/products\">Produkty</a>")
-#   end
-#
-#   it "returns link to homepage" do
-#     expect(last_response.body).to include("<a href=\"/\">Home</a>")
-#   endo include("<a href=\"/\">Home</a>")
-#   end
-#
-#       expect(last_response.status). to eql(422)
-#     end
-#   end
-#
-#   context "valid params" do
-#     let(:params){{product_id:1, quantity:10}}
-#     let(:domain){{"http://example.org"}}
-#
-#     before do
-#       do_request(params)
-#     end
-#
-#     it "redirect to products view" do
-#       expect(last_response).to be_redirect
-#     end
-#
-#     it "return 201 HTTP status code" do
-#       expect(last_response.status). to eql(200)
-#     end
-#   end
-#
-#   it "returns valid html Content-Type" do
-#     expect(last_response.headers["Content-Type"]).to include ("text/html")
-#   end
-#
-#   it "returns link to products view" do
-#     expect(last_response.body).to include("<a href=\"/products\">Produkty</a>")
-#   end
-#
-#   it "returns link to homepage" do
-#     expect(last_response.body).to include("<a href=\"/\">Home</a>")
-#   endrequire "web_helper"
-#
-# RSpec.describe "POST /basket", type: :request do
-#   context "invalid params" do
-#     let(:invalid params){{foo:"bar"}}
-#
-#     before do
-#       do_request(invalid_params)
-#     end
-#
-#     it "return 422 HTTP status code" do
-#       expect(last_response.status). to eql(422)
-#     end
-#   end
-#
-#   context "valid params" do
-#     let(:params){{product_id:1, quantity:10}}
-#     let(:domain){{"http://example.org"}}
-#
-#     before do
-#       do_request(params)
-#     end
-#
-#     it "redirect to products view" do
-#       expect(last_response).to be_redirect
-#     end
-#
-#     it "return 201 HTTP status code" do
-#       expect(last_response.status). to eql(200)
-#     end
-#   end
-#
-#   it "returns valid html Content-Type" do
-#     expect(last_response.headers["Content-Type"]).to include ("text/html")
-#   end
-#
-#   it "returns link to products view" do
-#     expect(last_response.body).to include("<a href=\"/products\">Produkty</a>")
-#   end
-#
-#   it "returns link to homepage" do
-#     expect(last_response.body).to include("<a href=\"/\">Home</a>")
-#   endo include("<a href=\"/\">Home</a>")
-#   end
-#
+RSpec.describe "GET /basket", type: :request do
+
+  let(:first_item) {Shop::FetchBasket.new.call.first}
+  let(:last_item) {Shop::FetchBasket.new.call.last}
+
+  before do
+    do_request
+  end
+
+  it "returns 200 HTTP code" do
+    expect(last_response.status).to eql(200)
+  end
+
+  it "contains first basket item name in h1 element" do
+    expect(last_response.body).to include("#{first_item.name}")
+  end
+
+  it "contains last basket item name in h1 element" do
+    expect(last_response.body).to include("#{last_item.name}")
+  end
+
+  it "returns link to products view" do
+    expect(last_response.body).to include("<a href=\"/products\">Produkty</a>")
+  end
+
+  it "returns link to homepage" do
+    expect(last_response.body).to include("<a href=\"/\">Home</a>")
+  end
+
+  it "returns input type 'submit' element" do
+    expect(last_response.body).to include("<input type=\"submit\" value=\"Usuń\">")
+  end
+
   private
-    def do_request(params={})
-      post "/basket", params
-    end
+    def do_request
+      get "/basket"
+  end
 end
