@@ -13,7 +13,12 @@ module Shop
   BASKET = []
   WAREHOUSE = []
 
-  class App< Sinatra::Base
+  class App < Sinatra::Base
+
+    configure do
+      set :dump_errors, false
+      set :method_override, true
+    end
 
     get "/" do
       erb :"products/index", locals: { products: PRODUCTS }
@@ -26,22 +31,22 @@ module Shop
 
     get "/products/:id" do |id|
         product = FetchProduct.new.call(id)
+        halt 404 unless product
         erb :"product/show", locals: { product: product }
     end
 
     get "/basket" do
       basket = FetchBasket.new.call
-      erb :"item/show", locals: {basket: basket}
+      erb :"item/show", locals: { basket: basket }
     end
 
     post "/basket" do
-      AddToBasket.new(params).call
-      redirect "/products"
-    end
-
-    delete "/basket" do
-      RemoveFromBasket.new(params).call
-      redirect "/basket"
+      begin
+        AddToBasket.new(params).call
+        redirect "/products"
+      rescue KeyError
+        halt 422
+      end
     end
   end
 end

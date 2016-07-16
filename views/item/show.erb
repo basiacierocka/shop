@@ -20,13 +20,7 @@
    <td><%= b[:quantity] %></td>
    <td><%= b[:product].price %> zł</td>
    <td><%= b[:total_price] %> zł</td>
-   <td>
-    <form action="/basket" method="delete">
-      <input type="hidden" name="basket_item_id" value= <%= basket_item_id %>>
-      <input type="number" name="quantity" value=-1>
-      <input type="submit" value="Usuń">
-    </form>
-  </td>
+   <td></td>
  </tr>
  <% end %>
  </tbody>
@@ -35,6 +29,12 @@
    <td></td>
    <td>SUMA</td>
    <td><%= basket.reduce(0) {|total_price, item| total_price += item[:total_price]} %> zl</td>
+   <td>
+     <form action="/basket_cleaned" method="patch">
+       <input type="hidden" name="basket" value=<%basket%>>
+       <input type="submit" value="Usuń wszystko">
+     </form>
+   </td>
  </tr>
  </tfoot>
 </table>
