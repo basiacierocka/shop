@@ -1,5 +1,7 @@
-<a href="/basket">Koszyk</a>
-<a href="/">Home</a>
+<div class="menu">
+  <a href="/">Home</a>
+  <a href="/basket">Koszyk</a>
+</div>
 <h1> Produkty</h1>
   <table>
     <thead>
@@ -12,14 +14,17 @@
     <tbody>
       <% products.each do |product| %>
       <tr>
-        <td><%= product.name %></td>
+        <td>
+          <a href="/products/<%= product.id %>"><%= product.name %></a></td>
         <td><%= product.price %> zl</td>
-        <td><form action="/basket" method="post">
-  <input type="hidden" name="product_id" value=<%= product.id %>>
-  <input type="number" name="quantity" value=1 maxlength="2">
-  <input type="submit" value="Dodaj">
-</form></td>
+        <td>
+          <form action="/basket" method="post">
+            <input type="hidden" name="product_id" value=<%= product.id %>>
+            <input type="number" name="quantity" value=1>
+            <input type="submit" value="Dodaj do koszyka">
+          </form>
+        </td>
     </tr>
-    <%end%>
+    <% end %>
   </tbody>
 </table>

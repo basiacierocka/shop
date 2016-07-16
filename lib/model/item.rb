@@ -24,5 +24,5 @@ module Shop
     def set_id
       @@id += 1
     end
-end
+  end
 end
